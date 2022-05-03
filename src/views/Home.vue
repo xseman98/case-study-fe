@@ -1,0 +1,221 @@
+<template>
+  <v-container class="home" fluid>
+     <card 
+      id="card-margin"
+      cardHeight="auto"
+      cardWidth="max(40%, 300px)"
+      cardColor="white"
+      :isLoading="!didLoadedCurrencies">
+      <template #heading>
+        <p class="text">
+          CONVERT
+        </p>
+        <p class="description">
+          The conversion will take place automatically after all of the data will be entered.
+        </p>
+      </template>
+      <template #body>
+        <v-row id="card-margin">
+          <v-col>
+            <v-text-field
+              v-model="convert.amount"
+              hide-details
+              single-line
+              color="purple"
+              label="Amount"
+              type="number"
+            />
+          </v-col>
+          <v-col>
+            <v-autocomplete
+              v-model="convert.from"
+              :items="getCurrencies"
+              item-text="code"
+              item-value="code"
+              label="From"
+              color="purple"
+              hide-no-data
+              hide-selected
+              auto-select-first
+              clearable
+            ></v-autocomplete>
+          </v-col>
+          <v-col>
+            <v-autocomplete
+              v-model="convert.to"
+              :items="getCurrencies"
+              item-text="code"
+              item-value="code"
+              label="To"
+              color="purple"
+              hide-no-data
+              hide-selected
+              auto-select-first
+              clearable
+            ></v-autocomplete>
+          </v-col>
+        </v-row>
+      </template>
+      <template #footer>
+        <v-row v-if="didLoadedConversion" id="card-margin">
+          <p class="header">
+            {{ getConversion.result[convert.to] }} {{ convert.to }}
+          </p>
+        </v-row>
+      </template>
+    </card>
+    <card 
+      id="card-margin"
+      cardHeight="auto"
+      cardWidth="max(40%, 300px)"
+      cardColor="white"
+      :isLoading="!didLoadedLatest">
+      <template #heading>
+        <p class="text">
+          LATEST {{base ? `(${base})` : `(USD)`}}
+        </p>
+      </template>
+      <template #body>
+        <v-autocomplete
+          v-model="base"
+          :items="getCurrencies"
+          item-text="code"
+          item-value="code"
+          label="Base"
+          color="purple"
+          hide-no-data
+          hide-selected
+          auto-select-first
+          clearable
+        ></v-autocomplete>
+        <v-virtual-scroll
+          :items="getLatest"
+          height="500"
+          item-height="120"
+        >
+          <template v-slot:default="{ item }">
+            <v-list-item :key="item.code">
+              <v-list-item-content>
+                <v-list-item-title>
+                  <v-row>
+                    <p class="text">
+                      {{ item.code }}
+                    </p>
+                    <v-divider></v-divider>
+                    <p class="text-bold">
+                      {{ item.value }}
+                    </p>
+                  </v-row>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-divider></v-divider>
+          </template>
+        </v-virtual-scroll>
+      </template>
+    </card>
+  </v-container>
+</template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex'
+import Card from '@/components/Card.vue'
+
+export default {
+  name: 'Home',
+
+  components: {
+    Card
+  },
+
+  data() {
+    return {
+      convert: {
+        amount: null,
+        from: null,
+        to: null
+      },
+      base: null
+    }
+  },
+
+  mounted() {
+    this.fetchCurrencies()
+    this.fetchLatest(this.base)
+  },
+
+  computed: {
+    ...mapGetters(['didLoadedCurrencies', 'getCurrencies', 'didLoadedConversion', 'getConversion', 'getLatest', 'didLoadedLatest'])
+  },
+
+  methods: {
+    ...mapActions(['fetchCurrencies', 'fetchConversion', 'fetchLatest'])
+  },
+
+  watch: {
+    convert: {
+      deep: true,
+      handler() {
+        if (this.convert.amount && this.convert.from && this.convert.to) {
+            this.fetchConversion(this.convert)
+        }
+      }
+    },
+    base: {
+      deep:true,
+      handler() {
+        this.fetchLatest(this.base)
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.home{
+  height: 100%;
+  width: 100%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#card-margin{
+  margin: 1rem
+}
+
+.header {
+  text-align: left;
+  font-size: 82px;
+  font-weight: 600;
+  color: purple;
+  margin: 1.5rem;
+}
+
+.text {
+  text-align: left;
+  font-size: 36px;
+  font-weight: 200;
+  color: purple;
+  margin: 1.5rem;
+}
+
+.text-bold {
+  text-align: left;
+  font-size: 36px;
+  font-weight: 600;
+  color: purple;
+  margin: 1.5rem;
+}
+
+.description {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0rem 1.5rem;
+}
+</style>
