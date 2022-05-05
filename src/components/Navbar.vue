@@ -9,7 +9,7 @@
           CASE STUDY
         </p>
         <v-btn
-          class="text"
+          class="text-nav"
           text
           x-large
           rounded

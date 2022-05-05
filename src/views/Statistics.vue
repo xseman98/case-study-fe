@@ -22,6 +22,8 @@
       :items="getHistory"
       :items-per-page="10"
       class="elevation-8 table"
+      sort-by="datetime"
+      sort-desc="true"
       :loading="!didLoadedHistory"
     ></v-data-table>
   </v-container>
@@ -63,6 +65,12 @@ export default {
         {
           text: 'Conversion',
           value: 'conversion',
+          align: 'start',
+          class: "purple lighten-5",
+        },
+        {
+          text: 'Date',
+          value: 'datetime',
           align: 'start',
           class: "purple lighten-5",
         },
