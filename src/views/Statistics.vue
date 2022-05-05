@@ -23,7 +23,7 @@
       :items-per-page="10"
       class="elevation-8 table"
       sort-by="datetime"
-      sort-desc="true"
+      :sort-desc="true"
       :loading="!didLoadedHistory"
     ></v-data-table>
   </v-container>
