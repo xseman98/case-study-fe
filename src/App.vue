@@ -2,7 +2,7 @@
   <v-app>
     <navbar/>
     <v-main>
-      <v-container fluid>
+      <v-container fluid style="min-width: 500px !important">
         <router-view></router-view>
       </v-container>
     </v-main>

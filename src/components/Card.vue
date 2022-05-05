@@ -60,8 +60,5 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.card-margin{
-    margin: 1rem;
-}
+<style scoped src="@/assets/css/style.css">
 </style>

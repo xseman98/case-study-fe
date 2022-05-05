@@ -6,11 +6,11 @@
       <p class="text-bold">{{ getHistory.length }}</p>
     </v-row>
     <v-row>
-      <p class="text">The most commonly used target currency:</p>
+      <p class="text">Commonly used target currency:</p>
       <p class="text-bold">{{ commonlyUsedCurrency('to') }}</p>
     </v-row>
     <v-row>
-      <p class="text">The most commonly used source currency:</p>
+      <p class="text">Commonly used source currency:</p>
       <p class="text-bold">{{ commonlyUsedCurrency('from') }}</p>
     </v-row>
     <v-divider></v-divider>
@@ -96,28 +96,5 @@ export default {
 }
 </script>
 
-<style scoped>
-.header {
-  text-align: left;
-  font-size: 82px;
-  font-weight: 600;
-  color: purple;
-  margin: 1.5rem;
-}
-
-.text-bold {
-  text-align: left;
-  font-size: 36px;
-  font-weight: 600;
-  color: purple;
-  margin: 1.5rem;
-}
-
-.text {
-  text-align: left;
-  font-size: 36px;
-  font-weight: 200;
-  color: purple;
-  margin: 1.5rem;
-}
+<style scoped src="@/assets/css/style.css">
 </style>

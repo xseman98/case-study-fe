@@ -5,10 +5,11 @@
       dark
     >
       <div class="d-flex align-center">
-        <p class="text-bold">
+        <p class="text-bold-nav">
           CASE STUDY
         </p>
         <v-btn
+          class="text"
           text
           x-large
           rounded
@@ -18,6 +19,7 @@
           CONVERT
         </v-btn>
         <v-btn
+          class="text-nav"
           text
           x-large
           rounded
@@ -45,12 +47,5 @@ export default {
 };
 </script>
 
-<style scoped>
-.text-bold {
-  text-align: left;
-  font-size: 36px;
-  font-weight: 600;
-  color: purple;
-  margin: 1.5rem;
-}
+<style scoped src="@/assets/css/style.css">
 </style>

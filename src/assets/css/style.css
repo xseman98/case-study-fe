@@ -1,0 +1,62 @@
+
+.text-bold-nav {
+    text-align: left;
+    font-size: clamp(1rem, 4vw, 2rem);
+    font-weight: 600;
+    color: purple;
+    margin: 1rem;
+}
+
+.text-nav {
+    text-align: left;
+    font-size: clamp(0.5rem, 2vw, 1rem);
+    font-weight: 300;
+    color: purple;
+}
+  
+.card-margin{
+    margin: 1rem;
+}
+
+
+.home{
+    height: 100%;
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.header {
+    text-align: left;
+    font-size: clamp(2rem, 10vw, 4rem);
+    font-weight: 600;
+    color: purple;
+    margin: 1rem;
+}
+
+.text {
+    text-align: left;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 200;
+    color: purple;
+    margin: 1rem;
+}
+
+.text-bold {
+    text-align: left;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 600;
+    color: purple;
+    margin: 1rem;
+}
+
+.description {
+    text-align: left;
+    font-size: clamp(0.5rem, 1vw, 1.5rem);
+    font-weight: 400;
+    margin: 0rem 1.5rem;
+}

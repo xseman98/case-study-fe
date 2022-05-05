@@ -1,7 +1,7 @@
 <template>
   <v-container class="home" fluid>
      <card 
-      id="card-margin"
+      class="card-margin"
       cardHeight="auto"
       cardWidth="max(40%, 300px)"
       cardColor="white"
@@ -15,8 +15,8 @@
         </p>
       </template>
       <template #body>
-        <v-row id="card-margin">
-          <v-col>
+        <v-row class="card-margin">
+          <v-col cols="12" lg="4" sm="12">
             <v-text-field
               v-model="convert.amount"
               hide-details
@@ -26,7 +26,7 @@
               type="number"
             />
           </v-col>
-          <v-col>
+          <v-col cols="12" lg="4" sm="12">
             <v-autocomplete
               v-model="convert.from"
               :items="getCurrencies"
@@ -40,7 +40,7 @@
               clearable
             ></v-autocomplete>
           </v-col>
-          <v-col>
+          <v-col cols="12" lg="4" sm="12">
             <v-autocomplete
               v-model="convert.to"
               :items="getCurrencies"
@@ -57,7 +57,7 @@
         </v-row>
       </template>
       <template #footer>
-        <v-row v-if="didLoadedConversion" id="card-margin">
+        <v-row v-if="didLoadedConversion" class="card-margin">
           <p class="header">
             {{ getConversion.result[convert.to] }} {{ convert.to }}
           </p>
@@ -65,7 +65,7 @@
       </template>
     </card>
     <card 
-      id="card-margin"
+      class="card-margin"
       cardHeight="auto"
       cardWidth="max(40%, 300px)"
       cardColor="white"
@@ -172,50 +172,5 @@ export default {
 }
 </script>
 
-<style scoped>
-.home{
-  height: 100%;
-  width: 100%;
-  float: left;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-#card-margin{
-  margin: 1rem
-}
-
-.header {
-  text-align: left;
-  font-size: 82px;
-  font-weight: 600;
-  color: purple;
-  margin: 1.5rem;
-}
-
-.text {
-  text-align: left;
-  font-size: 36px;
-  font-weight: 200;
-  color: purple;
-  margin: 1.5rem;
-}
-
-.text-bold {
-  text-align: left;
-  font-size: 36px;
-  font-weight: 600;
-  color: purple;
-  margin: 1.5rem;
-}
-
-.description {
-  text-align: left;
-  font-size: 12px;
-  font-weight: 400;
-  margin: 0rem 1.5rem;
-}
+<style scoped src="@/assets/css/style.css">
 </style>
